@@ -171,7 +171,7 @@ export const projects = [
     builtUpArea: '3,384 sq ft',
     floors: 'G + 2',
     mapUrl: 'https://maps.app.goo.gl/zxqfsiwuVTtjvz2n7?g_st=awb',
-    description: 'A multi-storey residential project with carefully planned spaces.', 
+    description: 'A multi-storey healthcare facility designed with a focus on functionality, efficient space planning, and a comfortable environment for patients and healthcare professionals. The project reflects our commitment to quality construction, practical design, and dependable building standards.', 
     cover: '/images/project 5/p5-1.jpeg',
     images: ['/images/project 5/p5-1.jpeg','/images/project 5/p5-2.jpeg', '/images/project 5/p5-3.jpeg', '/images/project 5/p5-4.jpeg', '/images/project 5/p5-5.jpeg', '/images/project 5/p5-6.jpeg', '/images/project 5/p5-7.jpeg', '/images/project 5/p5-8.jpeg', '/images/project 5/p5-9.jpeg', '/images/project 5/p5-10.jpeg', '/images/project 5/p5-11.jpeg', '/images/project 5/p5-12.jpeg', '/images/project 5/p5-13.jpeg', '/images/project 5/p5-14.jpeg'],
   },

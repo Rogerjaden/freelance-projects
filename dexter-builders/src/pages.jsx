@@ -178,8 +178,8 @@ export function About() {
       </section>
       <section className="sec">
         <div className="wrap">
-          <h2>{company.person}</h2>
-          <p style={{ margin: '12px 0 20px' }}>One builder. Every project. A personal commitment.</p>
+          <h4>One builder. Every project. A personal commitment.</h4>
+          <br></br>
           <p style={{ maxWidth: 680, marginBottom: 24 }}>I believe the difference is in the details. I take the time to understand what each project needs, put in the work, and keep moving forward until the pieces come together. Every new association is a chance to create something meaningful through trust, effort, and quality workmanship.</p>
           <Link to="/contact" className="btn btn-d">Let’s build together</Link>
         </div>

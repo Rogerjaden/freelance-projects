@@ -208,7 +208,7 @@ export const projects = [
     mapUrl: 'https://maps.app.goo.gl/anLkZCh1x8CzsJTF9?g_st=awb',
     description: 'A residential house designed for comfortable family living.', 
     cover: '/images/project 7/p7-1.jpeg',
-    images: ['/images/project 7/p7-1.jpeg','/images/project 7/p7-2.jpeg', '/images/project 7/p7-3.jpeg', '/images/project 7/p7-4.jpeg', '/images/project 7/p7-5.jpeg', '/images/project 7/p7-6.jpeg' ],
+    images: ['/images/project 7/p7-1.jpeg','/images/project 7/p7-2.jpeg', '/images/project 7/p7-3.jpeg', '/images/project 7/p7-4.jpeg', '/images/project 7/p7-5.jpeg', '/images/project 7/p7-6.jpeg', '/images/project 7/p7-7.jpeg' ],
   },
 
   {

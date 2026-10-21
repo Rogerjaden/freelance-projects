@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { Navbar, Footer } from './components.jsx'
-import { Home, Services, About, Projects, ProjectDetail, Contact } from './pages.jsx'
+import { Home, Services, About, Projects, ProjectDetail, InteriorGallery, Contact } from './pages.jsx'
 
 function ScrollTop() {
   const { pathname } = useLocation()
@@ -23,6 +23,7 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/projects/:slug" element={<ProjectDetail />} />
+          <Route path="/interiors" element={<InteriorGallery />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>

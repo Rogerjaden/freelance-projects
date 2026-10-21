@@ -8,6 +8,9 @@ export const company = {
   person: 'Er. Britto T',
   phone: '+91 85080 00683',
   phoneLink: '+918508000683',
+  secondPerson: 'Er. Satheesh E',
+  secondPhone: '+91 96558 78963',
+  secondPhoneLink: '+919655878963',
   email: 'thedexterbuilders@gmail.com',
   hours: 'Mon to Sat, 9:00 am to 6:00 pm',
 }
@@ -15,13 +18,13 @@ export const company = {
 export const services = [
   {
     title: 'Construction',
-    short: 'Houses and apartment buildings, built carefully from foundation to finish.',
+    short: 'From laying the foundation to handing over the keys, we build durable, high-quality residential and commercial spaces.',
     img: '/images/service-construction.jpg',
-    points: ['Independent houses and villas', 'Apartments and multi-storey buildings', 'Structure, finishing and painting', 'Site supervision and quality checks'],
+    points: ['Custom home construction and villas', 'Commercial buildings and structural work', 'Renovations, remodeling, and structural extensions', 'Site supervision and quality checks'],
   },
   {
     title: 'Interiors',
-    short: 'Interiors planned around how you live, with clean finishing.',
+    short: 'We transform empty structures into functional, modern spaces tailored to your lifestyle and budget.',
     img: '/images/service-interiors.png',
     images: [
       '/images/interiors/i-1.jpeg',
@@ -38,15 +41,33 @@ export const services = [
       '/images/interiors/i-12.jpeg',
       '/images/interiors/i-13.jpeg',
       '/images/interiors/i-14.jpeg',
-      '/images/interiors/i-15.jpeg'      
+      '/images/interiors/i-15.jpeg',
+      '/images/interiors/i-16.jpeg',
+      '/images/interiors/i-17.jpeg',
+      '/images/interiors/i-18.jpeg',
+      '/images/interiors/i-19.jpeg',
+      '/images/interiors/i-20.jpeg',
+      '/images/interiors/i-21.jpeg',
+      '/images/interiors/i-22.jpeg',
+      '/images/interiors/i-23.jpeg',
+      '/images/interiors/i-24.jpeg',
+      '/images/interiors/i-25.jpeg',
+      '/images/interiors/i-26.jpeg',
+      '/images/interiors/i-27.jpeg',
+      '/images/interiors/i-28.jpeg',
+      '/images/interiors/i-29.jpeg',
+      '/images/interiors/i-30.jpeg',
+      '/images/interiors/i-31.jpeg',
+      '/images/interiors/i-32.jpeg',
+      '/images/interiors/i-33.jpeg'
     ],
-    points: ['Space planning', 'Modular kitchens and wardrobes', 'False ceilings and lighting', 'Furniture and finishing'],
+    points: ['Modular kitchens and custom wardrobes', 'Complete home and office interior fit-outs', '3D design visualization, false ceilings, lighting, and woodwork', 'Furniture and finishing'],
   },
   {
     title: 'Real Estate',
-    short: 'Help finding, buying and developing the right property.',
+    short: 'Make confident property investments with guidance rooted in a decade of construction and market insight.',
     img: '/images/service-realestate.png',
-    points: ['Plot and property sourcing', 'Buying and selling support', 'Documentation guidance', 'Property development'],
+    points: ['Buying and selling of residential and commercial properties', 'Land and plot consulting', 'Property development and joint ventures'],
   },
 ]
 
@@ -134,8 +155,8 @@ export const projects = [
     floors: 'G + 1',
     mapUrl: 'https://maps.app.goo.gl/f93twu8ybGbdkGz1A?g_st=awb',
     description: 'A residential house designed for comfortable family living.', 
-    cover: '/images/hero.png',
-    images: ['/images/hero.png','/images/project 4/p4-1.jpeg','/images/project 4/p4-2.png', '/images/project 4/p4-3.jpg', '/images/project 4/p4-4.jpeg', '/images/project 4/p4-5.jpeg', '/images/project 4/p4-6.jpeg', '/images/project 4/p4-7.jpeg'],
+    cover: '/images/project 4/p4-1.png',
+    images: ['/images/project 4/p4-1.png','/images/project 4/p4-2.png', '/images/project 4/p4-3.jpg', '/images/project 4/p4-4.jpeg', '/images/project 4/p4-5.jpeg', '/images/project 4/p4-6.jpeg', '/images/project 4/p4-7.jpeg'],
   },
   
   {
@@ -169,7 +190,7 @@ export const projects = [
     mapUrl: 'https://maps.app.goo.gl/xtFYCCxi1bC8ZCaq6',
     description: 'A residential house designed for comfortable family living.', 
     cover: '/images/project 6/p6-1.jpeg',
-    images: ['/images/project 6/p6-1.jpeg','/images/project 6/p6-2.jpeg', '/images/project 6/p6-3.jpeg', '/images/project 6/p6-4.jpeg', '/images/project 6/p6-5.jpg'],
+    images: ['/images/project 6/p6-1.jpeg','/images/project 6/p6-2.jpeg', '/images/project 6/p6-3.jpeg', '/images/project 6/p6-4.jpeg', '/images/project 6/p6-5.jpg','/images/project 6/p6-6.jpeg', '/images/project 6/p6-7.jpeg', '/images/project 6/p6-8.jpeg', '/images/project 6/p6-9.jpeg', '/images/project 6/p6-10.jpeg', '/images/project 6/p6-11.jpeg', '/images/project 6/p6-12.jpeg', '/images/project 6/p6-13.jpeg', '/images/project 6/p6-14.jpeg'],
   },
 
   {

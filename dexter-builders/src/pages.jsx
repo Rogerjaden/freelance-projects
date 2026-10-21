@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { Reveal, Counter, ProjectsRow } from './components.jsx'
 import { company, services, steps, projects } from './data.js'
@@ -72,7 +72,10 @@ export function Home() {
       <section className="sec alt">
         <div className="wrap">
           <div className="head">
-            <h2>Our projects</h2>
+            <div className="head-copy">
+              <h2>Some of Our Valued Projects</h2>
+              <p>A selection of our work, built with care, quality, and attention to detail.</p>
+            </div>
             <Link to="/projects" className="btn btn-o">All projects</Link>
           </div>
           <ProjectsRow />
@@ -105,8 +108,6 @@ export function Home() {
 }
 
 export function Services() {
-  const [showInteriorGallery, setShowInteriorGallery] = useState(false)
-
   return (
     <>
       <PageHead title="Services" text="Construction, interiors and real estate under one roof." />
@@ -122,53 +123,19 @@ export function Services() {
               <Link to="/contact" className="btn btn-d">Enquire now</Link>
 
               {s.title === 'Interiors' && (
-                <button
-                  type="button"
+                <Link
+                  to="/interiors"
                   className="btn btn-o"
-                  style={{ marginLeft: 12, marginTop: 12, cursor: 'pointer' }}
-                  aria-expanded={showInteriorGallery}
-                  onClick={() => setShowInteriorGallery((visible) => !visible)}
+                  style={{ marginLeft: 12, marginTop: 12 }}
                 >
-                  {showInteriorGallery ? 'Hide images' : 'View images'}
-                </button>
+                  View images
+                </Link>
               )}
             </Reveal>
             <Reveal className="split-img" delay={150}>
               <img src={s.img} alt={s.title} />
             </Reveal>
           </div>
-
-          {s.title === 'Interiors' && showInteriorGallery && (
-            <div className="wrap" style={{ marginTop: 32 }}>
-              <h3 style={{ marginBottom: 20 }}>Interior Project Gallery</h3>
-              {s.images?.length ? (
-                <div
-                  style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-                    gap: 20,
-                  }}
-                >
-                  {s.images.map((src) => (
-                    <img
-                      key={src}
-                      src={src}
-                      alt="Dexter Builders interior project"
-                      loading="lazy"
-                      style={{
-                        width: '100%',
-                        height: 240,
-                        objectFit: 'cover',
-                        display: 'block',
-                      }}
-                    />
-                  ))}
-                </div>
-              ) : (
-                <p>Add interior photo paths to the images array in src/data.js.</p>
-              )}
-            </div>
-          )}
         </section>
       ))}
     </>
@@ -188,11 +155,14 @@ export function About() {
         <div className="wrap split">
           <Reveal>
             <h2>Our story</h2>
-            <p>Dexter Builders is built on a simple belief: good construction begins with hard work, honesty, and personal responsibility. As an independent builder, I take pride in being closely involved in every project, understanding each client’s needs, and working towards a result they can feel proud of.</p>
-            <p>Every new project is an opportunity to learn, improve, and build lasting relationships. Whether it involves a new home, a renovation, or another construction project, I approach the work with dedication, careful planning, and respect for the client’s vision.</p>
-            <p>My aim is simple: to build with care, communicate openly, and deliver work that reflects the effort put into it. Every project carries my commitment to doing the job properly, one step at a time.</p>
+            <p>Complete Property Solutions Under One Roof: Construction, Interiors & Real Estate.</p>
+            <p>Backed by 10 years of trusted foundational experience, Dexter builders is growing rapidly to build, design, and deliver your dream spaces in Coimbatore and dindigul.</p>
+            <h1>About us</h1>
+            <br></br>
+            <h3>A Decade of Experience. A New Era of Growth.</h3>
+            <p>For the past 10 years, we have built our reputation from the ground up through hard work, quality craftsmanship, and client trust. Today, Dexter Builders is stepping into an exciting new phase of growth. We have expanded our team and capabilities to offer seamless, end-to-end property services. Whether you are looking to buy the right plot, construct a strong building, or design stunning interiors, you no longer need to manage multiple contractors—we handle it all from start to finish.</p>
           </Reveal>
-          <Reveal className="split-img" delay={150}><img src="/images/p2-1.png" alt="Building by Dexter Builders" /></Reveal>
+          <Reveal className="split-img" delay={150}><img src="/images/project 2/p2-1.png" alt="Building by Dexter Builders" /></Reveal>
         </div>
       </section>
       <StatsBar />
@@ -218,10 +188,83 @@ export function About() {
   )
 }
 
+function ImageLightbox({ images, index, onChange, onClose, alt }) {
+  useEffect(() => {
+    if (index === null) return undefined
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') onClose()
+      if (event.key === 'ArrowRight') onChange((index + 1) % images.length)
+      if (event.key === 'ArrowLeft') onChange((index - 1 + images.length) % images.length)
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    document.body.style.overflow = 'hidden'
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+      document.body.style.overflow = ''
+    }
+  }, [index, images.length, onChange, onClose])
+
+  if (index === null || !images[index]) return null
+
+  const previous = () => onChange((index - 1 + images.length) % images.length)
+  const next = () => onChange((index + 1) % images.length)
+
+  return (
+    <div className="lb" role="dialog" aria-modal="true" aria-label="Photo viewer" onClick={onClose}>
+      <button className="lb-close" type="button" aria-label="Close photo viewer" onClick={onClose}>×</button>
+      <button className="lb-nav lb-prev" type="button" aria-label="Previous photo" onClick={(event) => { event.stopPropagation(); previous() }}>‹</button>
+      <figure className="lb-figure" onClick={(event) => event.stopPropagation()}>
+        <img src={images[index]} alt={`${alt} ${index + 1}`} />
+        <figcaption>{index + 1} / {images.length}</figcaption>
+      </figure>
+      <button className="lb-nav lb-next" type="button" aria-label="Next photo" onClick={(event) => { event.stopPropagation(); next() }}>›</button>
+    </div>
+  )
+}
+
+export function InteriorGallery() {
+  const interiorService = services.find((service) => service.title === 'Interiors')
+  const images = interiorService?.images ?? []
+  const [activeImage, setActiveImage] = useState(null)
+
+  return (
+    <>
+      <PageHead title="Interior Project Gallery" text="Explore our interior work, from thoughtful layouts to carefully finished details." />
+      <section className="sec">
+        <div className="wrap">
+          <div className="gallery-intro">
+            <Link to="/services" className="gallery-back">← Back to services</Link>
+            <p>{images.length} interior photos</p>
+          </div>
+          {images.length ? (
+            <div className="gal interior-gal">
+              {images.map((src, index) => (
+                <button className="gallery-tile" type="button" key={src} onClick={() => setActiveImage(index)} aria-label={`Open interior photo ${index + 1}`}>
+                  <img src={src} alt={`Dexter Builders interior ${index + 1}`} loading="lazy" />
+                  <span>View photo ↗</span>
+                </button>
+              ))}
+            </div>
+          ) : <p>No interior photos have been added yet.</p>}
+        </div>
+      </section>
+      <ImageLightbox
+        images={images}
+        index={activeImage}
+        onChange={setActiveImage}
+        onClose={() => setActiveImage(null)}
+        alt="Interior project photo"
+      />
+    </>
+  )
+}
+
 export function Projects() {
   return (
     <>
-      <PageHead title="Projects" text="Scroll sideways to browse our work. Open any project for photos and details." />
+      <PageHead title="Some of Our Valued Projects" text="Explore a selection of our work, showcasing our commitment to quality construction, thoughtful design, and lasting value. Open any project to view photos and details." />
       <section className="sec"><div className="wrap"><ProjectsRow /></div></section>
     </>
   )
@@ -276,7 +319,12 @@ return (
           </Reveal>
           <h2 style={{ marginBottom: 24 }}>Photos</h2>
           <div className="gal">
-            {p.images.map((src) => <img key={src} src={src} alt={p.name} onClick={() => setLb(src)} />)}
+            {p.images.map((src, index) => (
+              <button className="gallery-tile" type="button" key={src} onClick={() => setLb(index)} aria-label={`Open ${p.name} photo ${index + 1}`}>
+                <img src={src} alt={`${p.name} photo ${index + 1}`} loading="lazy" />
+                <span>View photo ↗</span>
+              </button>
+            ))}
           </div>
           <div className="pn">
             <Link to={`/projects/${prev.slug}`}>← {prev.name}</Link>
@@ -284,7 +332,13 @@ return (
           </div>
         </div>
       </section>
-      {lb && <div className="lb" onClick={() => setLb(null)}><img src={lb} alt="" /></div>}
+      <ImageLightbox
+        images={p.images}
+        index={lb}
+        onChange={setLb}
+        onClose={() => setLb(null)}
+        alt={p.name}
+      />
     </>
   )
 }
@@ -303,13 +357,60 @@ export function Contact() {
         <div className="wrap cgrid">
           <div className="info">
             <p><small>Contact person</small>{company.person}</p>
-            <p><small>Phone</small><a href={`tel:${company.phoneLink}`}>{company.phone}</a></p>
+            <p>
+              <small>Phone</small>
+              <a href={`tel:${company.phoneLink}`}>{company.phone}</a>
+              {' | '}
+              <a
+                href={`https://wa.me/${company.phoneLink}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                WhatsApp
+              </a>
+            </p>
+            <p><small>Contact person</small>{company.secondPerson}</p>
+            <p>
+              <small>Phone</small>
+              <a href={`tel:${company.secondPhoneLink}`}>
+                {company.secondPhone}
+              </a>
+              {' | '}
+              <a
+                href={`https://wa.me/${company.secondPhoneLink}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                WhatsApp
+              </a>
+            </p>
             <p><small>Email</small><a href={`mailto:${company.email}`}>{company.email}</a></p>
             <p><small>Hours</small>{company.hours}</p>
           </div>
           <form onSubmit={send}>
-            <input name="name" placeholder="Your name" required />
-            <input name="phone" placeholder="Phone number" required />
+            <input
+              name="name"
+              placeholder="Your name"
+              required
+              pattern="[A-Za-z ]+"
+              title="Please enter your name using letters and spaces only."
+              onChange={(e) => {
+                e.target.value = e.target.value.replace(/[^A-Za-z ]/g, '')
+              }}
+            />
+            <input
+              name="phone"
+              type="tel"
+              placeholder="Phone number"
+              required
+              inputMode="numeric"
+              pattern="[0-9]{10}"
+              maxLength={10}
+              title="Please enter a valid 10-digit phone number."
+              onChange={(e) => {
+                e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10)
+              }}
+            />
             <textarea name="message" rows="5" placeholder="Tell us about your project" required />
             <button className="btn btn-d" type="submit">Send enquiry</button>
           </form>
